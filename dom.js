@@ -1,4 +1,4 @@
-let value;
+let value = 0;
 function createState(initialValue) {
   if (value === undefined) {
     value = initialValue;
@@ -9,20 +9,20 @@ function createState(initialValue) {
   return [value, getState];
 }
 
-let [state, setState] = createState(5);
-
 const domState = document.getElementById("state");
 const domPlus = document.getElementById("plus");
 const domMinus = document.getElementById("minus");
 
-domState.innerHTML = state;
+domState.innerHTML = value;
 
 domPlus.addEventListener("click", () => {
-  setState(value + 1);
-  domState.innerHTML = value;
+  let [state, setState] = createState(5);
+  setState(state + 1);
+  domState.innerHTML = state;
 });
 
 domMinus.addEventListener("click", () => {
-  setState(value - 1);
-  domState.innerHTML = value;
+  let [state, setState] = createState(5);
+  setState(state - 1);
+  domState.innerHTML = state;
 });
