@@ -9,12 +9,20 @@ function createState(initialValue) {
   return [value, getState];
 }
 
-const [state, setState] = createState(5);
+let [state, setState] = createState(5);
 
 const domState = document.getElementById("state");
 const domPlus = document.getElementById("plus");
 const domMinus = document.getElementById("minus");
+
 domState.innerHTML = state;
+
 domPlus.addEventListener("click", () => {
-  console.log("clicked");
+  setState(value + 1);
+  domState.innerHTML = value;
+});
+
+domMinus.addEventListener("click", () => {
+  setState(value - 1);
+  domState.innerHTML = value;
 });
